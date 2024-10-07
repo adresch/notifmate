@@ -15,8 +15,6 @@
 
 ### Prerequisites
 
-- An Android tablet (minimum version X.X).
-- An Android phone (minimum version X.X).
 - Bluetooth-enabled devices.
 
 ### Installation
