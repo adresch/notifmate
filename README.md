@@ -55,7 +55,7 @@ Contributions are welcome! If you would like to contribute to NotifMate, please 
 
 ## Issues & Support
 
-If you encounter any issues or have feature requests, please feel free to open an issue in this repository. For general support or inquiries, contact us at [info@aeri-gear.com](mailto:info@aeri-gear.com).
+If you encounter any issues or have feature requests, please feel free to open an issue in this repository. For general support or inquiries, contact us at [antoine.dresch@aeri-gear.com](mailto:antoine.dresch@aeri-gear.com).
 
 ## About Aeri Gear
 
