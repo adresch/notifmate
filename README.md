@@ -19,7 +19,9 @@
 
 ### Installation
 
-You can download the APK directly from the [Releases](#) section of this repository. Simply install the app on both your phone and tablet to get started.
+The app is accessible on the Play Store. You can download it from [here](https://play.google.com/store/apps/details?id=com.notifmate).
+
+Alternatively you can download the APK directly from the [Releases](#) section of this repository. Simply install the app on both your phone and tablet to get started.
 
 1. Download the latest APK from the [Releases](#) section.
 2. Allow installations from unknown sources in your Android settings.
