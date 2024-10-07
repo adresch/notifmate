@@ -37,7 +37,7 @@ You can download the APK directly from the [Releases](#) section of this reposit
 
 ## License
 
-NotifMate is available under an open-source license (AGPL v3). However, the commercial rights to publish and monetize the app are exclusively reserved for [Aeri Gear](https://aeri-gear.com/). For commercial use or inquiries, please contact us at [info@aeri-gear.com](mailto:info@aeri-gear.com).
+NotifMate is available under an open-source license (AGPL v3). However, the commercial rights to publish and monetize the app are exclusively reserved for [Aeri Gear](https://aeri-gear.com/). For commercial use or inquiries, please contact us at [antoine.dresch@aeri-gear.com](mailto:antoine.dresch@aeri-gear.com).
 
 Please see the [LICENSE](LICENSE) file for more details.
 
