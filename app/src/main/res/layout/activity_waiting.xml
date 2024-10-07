@@ -1,0 +1,110 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundColor"
+    tools:context=".ActivityWaiting">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/backgroundimg"
+        android:scaleType="fitXY"
+        android:src="@drawable/background" />
+
+    <!-- Header Section -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <!-- Header Logo - Left Side -->
+        <ImageView
+            android:id="@+id/header_logo"
+            android:layout_width="200dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:scaleType="fitXY"
+            android:src="?attr/toplogo" />
+
+    </RelativeLayout>
+
+    <!-- CardView -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        app:cardBackgroundColor="?attr/backgroundColor"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <View
+                android:id="@+id/vieww"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentTop="true" />
+            <!-- Text on Top Center -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:layout_below="@+id/vieww"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/purple_blue"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text=""
+                android:textColor="?attr/lightBlack_darkWhite"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <!-- Rounded Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDevice"
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:layout_below="@id/txtTitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/purple_blue"
+                android:paddingHorizontal="40dp"
+                android:text="@string/run_locally"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <!-- Rounded Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnClose"
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:layout_below="@id/btnDevice"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/red"
+                android:paddingHorizontal="50dp"
+                android:text="@string/cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

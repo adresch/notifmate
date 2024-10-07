@@ -1,0 +1,440 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundColor"
+    tools:context=".ActivitySetting">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/backgroundimg"
+        android:scaleType="fitXY"
+        android:src="@drawable/background" />
+
+    <!-- Header Section -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/header_logo"
+            android:layout_width="200dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:scaleType="fitXY"
+            android:src="?attr/toplogo" />
+
+    </RelativeLayout>
+
+    <!-- CardView -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="?attr/backgroundColor"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
+        android:elevation="18dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/button_layout"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <!-- Notification Source TextView -->
+
+                    <!-- Notification Source TextView -->
+
+                    <TextView
+                        android:id="@+id/notification_source_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/notification_source"
+                        android:textColor="?attr/lightBlack_darkWhite"
+                        android:textStyle="bold" />
+
+                    <!-- Remote & Local Checkbox -->
+                    <RadioGroup
+                        android:id="@+id/radio_group_noti"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/notification_source_textview"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <!-- Remote Only Checkbox -->
+                        <RadioButton
+                            android:id="@+id/remote_local_checkbox"
+                            android:layout_width="194dp"
+                            android:layout_height="48dp"
+                            android:checked="false"
+                            android:clickable="true"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="@string/remote_amp_local"
+                            android:textColor="?attr/lightBlack_darkWhite" />
+
+                        <RadioButton
+                            android:id="@+id/remote_only_checkbox"
+                            android:layout_width="194dp"
+                            android:layout_height="48dp"
+                            android:checked="false"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="@string/remote_only"
+                            android:textColor="?attr/lightBlack_darkWhite"
+                            app:useMaterialThemeColors="false" />
+
+                        <!-- Local Only Checkbox -->
+                        <RadioButton
+                            android:id="@+id/local_only_checkbox"
+                            android:layout_width="194dp"
+                            android:layout_height="48dp"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="@string/local_only"
+                            android:textColor="?attr/lightBlack_darkWhite" />
+
+                        <!-- None Checkbox -->
+                        <RadioButton
+                            android:id="@+id/none_checkbox"
+                            android:layout_width="194dp"
+                            android:layout_height="48dp"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="@string/none"
+                            android:textColor="?attr/lightBlack_darkWhite" />
+                    </RadioGroup>
+
+
+                    <!-- Separator Line -->
+                    <View
+                        android:id="@+id/separator_line1"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/radio_group_noti"
+                        android:layout_marginTop="16dp"
+                        android:background="?attr/lightBlack_darkWhite" />
+
+                    <!-- Title 1 TextView -->
+                    <TextView
+                        android:id="@+id/title1_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/separator_line1"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/music_player_source"
+                        android:textColor="?attr/lightBlack_darkWhite"
+                        android:textStyle="bold" />
+
+                    <!-- Check Button Group 1 -->
+
+                    <RadioGroup
+                        android:id="@+id/radio_group_music"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/title1_textview">
+
+                        <RadioButton
+                            android:id="@+id/check_button1"
+                            android:layout_width="194dp"
+                            android:layout_height="48dp"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="@string/remote_player"
+                            android:textColor="?attr/lightBlack_darkWhite" />
+
+                        <!-- Check Button Group 2 -->
+                        <RadioButton
+                            android:id="@+id/check_button2"
+                            android:layout_width="194dp"
+                            android:layout_height="48dp"
+                            android:checked="false"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="@string/local_player"
+                            android:textColor="?attr/lightBlack_darkWhite" />
+
+                        <!-- Check Button Group 3 -->
+                        <RadioButton
+                            android:id="@+id/check_button3"
+                            android:layout_width="194dp"
+                            android:layout_height="48dp"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="@string/none"
+                            android:textColor="?attr/lightBlack_darkWhite" />
+                    </RadioGroup>
+                    <!-- Separator Line -->
+                    <View
+                        android:id="@+id/separator_line2"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/radio_group_music"
+                        android:layout_marginTop="16dp"
+                        android:background="?attr/lightBlack_darkWhite" />
+
+                    <!-- Title 2 TextView -->
+                    <TextView
+                        android:id="@+id/title2_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/separator_line2"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/theme"
+                        android:textColor="?attr/lightBlack_darkWhite"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/radio_theme_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/title2_textview"
+                        android:orientation="vertical">
+                        <!-- Check Button Group 5 -->
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/check_button5"
+                            android:layout_width="194dp"
+                            android:layout_height="48dp"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="@string/always_bright"
+                            android:textColor="?attr/lightBlack_darkWhite" />
+
+                        <!-- Check Button Group 6 -->
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/check_button6"
+                            android:layout_width="194dp"
+                            android:layout_height="48dp"
+                            android:checked="false"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="@string/always_dark"
+                            android:textColor="?attr/lightBlack_darkWhite" />
+
+                        <!-- Check Button Group 7 -->
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/check_button7"
+                            android:layout_width="194dp"
+                            android:layout_height="48dp"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="@string/automatic_follow_device_theme"
+                            android:textColor="?attr/lightBlack_darkWhite" />
+                    </RadioGroup>
+
+                    <!-- Separator Line -->
+                    <View
+                        android:id="@+id/separator_line3"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/radio_theme_group"
+                        android:layout_marginTop="16dp"
+                        android:background="?attr/lightBlack_darkWhite" />
+
+                    <!-- Title 2 TextView -->
+                    <TextView
+                        android:id="@+id/title3_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/separator_line3"
+                        android:layout_marginTop="16dp"
+                        android:text="Overlay"
+                        android:textColor="?attr/lightBlack_darkWhite"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/radio_overlay_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/title3_textview"
+                        android:orientation="vertical">
+                        <!-- Check Button Group 5 -->
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/check_button8"
+                            android:layout_width="194dp"
+                            android:layout_height="48dp"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="Always"
+                            android:textColor="?attr/lightBlack_darkWhite" />
+
+                        <!-- Check Button Group 6 -->
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/check_button9"
+                            android:layout_width="194dp"
+                            android:layout_height="48dp"
+                            android:checked="false"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="When app is in background"
+                            android:textColor="?attr/lightBlack_darkWhite" />
+
+                        <!-- Check Button Group 7 -->
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/check_button10"
+                            android:layout_width="194dp"
+                            android:layout_height="48dp"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="Never"
+                            android:textColor="?attr/lightBlack_darkWhite" />
+                    </RadioGroup>
+
+                    <!-- Separator Line -->
+                    <View
+                        android:id="@+id/separator_line4"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/radio_overlay_group"
+                        android:layout_marginTop="16dp"
+                        android:background="?attr/lightBlack_darkWhite" />
+
+                    <TextView
+                        android:id="@+id/last_notification_app"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/separator_line4"
+                        android:text="Last notification from: "
+                        android:layout_marginTop="16dp"
+                        android:textColor="?attr/lightBlack_darkWhite"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/app_source_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notifications to show"
+                        android:layout_marginTop="16dp"
+                        android:layout_below="@id/last_notification_app"
+                        android:textColor="?attr/lightBlack_darkWhite"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/searchSection"
+                        android:layout_width="match_parent"
+                        android:layout_height="270dp"
+                        android:layout_below="@+id/app_source_textview"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.SearchView
+                            android:id="@+id/searchView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/rounded_corner_background_grey"
+                            android:hint="Search for apps..."
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recApp"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/separator_line_last_app"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/searchSection"
+                        android:layout_marginTop="16dp"
+                        android:background="?attr/lightBlack_darkWhite" />
+
+
+                    <!-- Separator Line -->
+                    <!--                    <View-->
+                    <!--                        android:id="@+id/separator_line3"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="1dp"-->
+                    <!--                        android:layout_below="@id/radio_theme_group"-->
+                    <!--                        android:layout_marginTop="16dp"-->
+                    <!--                        android:background="?attr/lightBlack_darkWhite" />-->
+                    <!-- Text View Below -->
+                    <!-- Two Buttons Below -->
+                </RelativeLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:id="@+id/connectedDeviceLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="229dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/txtDeviceName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/connected_to"
+                    android:textColor="?attr/lightBlack_darkWhite"
+                    android:textSize="25sp"
+                    android:textStyle="normal" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnClose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="65dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@color/purple_blue"
+                    android:paddingHorizontal="25dp"
+                    android:text="@string/close_settings"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDisconnect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="65dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:backgroundTint="@color/red"
+                    android:paddingHorizontal="35dp"
+                    android:text="@string/disconnect"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

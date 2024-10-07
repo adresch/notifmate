@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+   >
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/backgroundimg"
+        android:scaleType="fitXY"
+        android:src="@drawable/background" />
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <!-- Header Logo - Left Side -->
+        <ImageView
+            android:id="@+id/header_logo"
+            android:layout_width="200dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:scaleType="fitXY"
+            android:src="?attr/toplogo" />
+
+        <!-- Settings Icon - Right Side -->
+        <ImageView
+            android:id="@+id/settings_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="Settings button"
+            android:src="@drawable/ic_settings"
+            app:tint="?attr/lightBlack_darkWhite" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="48dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="100dp"
+        app:layout_constraintTop_toBottomOf="@+id/header">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="20dp"
+            app:cardBackgroundColor="?attr/backgroundColor"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- Image -->
+                <ImageView
+                    android:id="@+id/image_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/text_view1"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_connected" />
+
+                <!-- First TextView -->
+                <TextView
+                    android:id="@+id/text_view1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/text_view2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Connected to"
+                    android:textColor="?attr/lightBlack_darkWhite"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- Second TextView -->
+                <TextView
+                    android:id="@+id/text_view2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/rounded_button1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Device 1"
+                    android:textColor="?attr/lightBlack_darkWhite"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <!-- Rounded Button -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/rounded_button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="65dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/rounded_button_bg"
+                    android:paddingStart="40dp"
+                    android:paddingTop="15dp"
+                    android:paddingEnd="41dp"
+                    android:paddingBottom="15dp"
+                    android:text="Disconnect"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

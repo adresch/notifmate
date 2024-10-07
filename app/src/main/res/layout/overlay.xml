@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/overlay_item_card_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:elevation="16dp"
+    android:focusable="true"
+    app:cardBackgroundColor="?attr/backgroundColor"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="6dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:id="@+id/overlay_noti_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <!--                <androidx.cardview.widget.CardView-->
+                <!--                    android:id="@+id/image_view_top"-->
+                <!--                    android:layout_width="45dp"-->
+                <!--                    android:layout_height="45dp"-->
+                <!--                    android:visibility="gone"-->
+                <!--                    app:cardCornerRadius="5dp">-->
+
+                <!--                    <ImageView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="match_parent"-->
+                <!--                        android:background="#ECF1F4"-->
+                <!--                        android:contentDescription="@string/appimage"-->
+                <!--                        android:scaleType="fitXY"-->
+                <!--                        android:src="@drawable/placeholder" />-->
+                <!--                </androidx.cardview.widget.CardView>-->
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/header_logo"
+                        android:layout_width="200dp"
+                        android:layout_height="32dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_marginStart="0dp"
+                        android:scaleType="fitXY"
+                        android:src="?attr/toplogo" />
+
+                    <TextView
+                        android:id="@+id/overlay_header_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Header Text"
+                        android:textColor="?attr/lightBlack_darkWhite"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/overlay_title_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:text="Title Text"
+                        android:textColor="?attr/lightBlack_darkWhite"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/overlay_description_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:text="Description text"
+                        android:textColor="?attr/lightBlack_darkWhite"
+                        android:textSize="22sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/overlay_delete_button"
+                        android:layout_width="300dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="15dp"
+                        android:backgroundTint="@color/purple_blue"
+                        android:elevation="8dp"
+                        android:text="Hide"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--        <com.google.android.material.checkbox.MaterialCheckBox-->
+        <!--            android:layout_width="50dp"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:checked="true" -->
+        <!--            />-->
+
+    </FrameLayout>
+
+</com.google.android.material.card.MaterialCardView>

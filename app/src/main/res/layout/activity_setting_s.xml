@@ -1,0 +1,219 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundColor"
+    tools:context=".ActivitySettingS">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/backgroundimg"
+        android:scaleType="fitXY"
+        android:src="@drawable/background" />
+
+    <!-- Header Section -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <!-- Header Logo - Left Side -->
+        <ImageView
+            android:id="@+id/header_logo"
+            android:layout_width="200dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:scaleType="fitXY"
+            android:src="?attr/toplogo" />
+
+    </RelativeLayout>
+
+    <!-- CardView -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/header"
+        android:elevation="18dp"
+        app:cardBackgroundColor="?attr/backgroundColor"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/button_layout"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <!-- Title 2 TextView -->
+                    <TextView
+                        android:id="@+id/title2_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/theme"
+                        android:textColor="?attr/lightBlack_darkWhite"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/radio_theme_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/title2_textview"
+                        android:orientation="vertical">
+                        <!-- Check Button Group 5 -->
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/check_button5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="@string/always_bright"
+                            android:textColor="?attr/lightBlack_darkWhite" />
+
+                        <!-- Check Button Group 6 -->
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/check_button6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="@string/always_dark"
+                            android:textColor="?attr/lightBlack_darkWhite" />
+
+                        <!-- Check Button Group 7 -->
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/check_button7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:text="@string/automatic_follow_device_theme"
+                            android:textColor="?attr/lightBlack_darkWhite" />
+                    </RadioGroup>
+
+                    <!-- Separator Line -->
+                    <View
+                        android:id="@+id/separator_line2"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/radio_theme_group"
+                        android:layout_marginTop="16dp"
+                        android:background="?attr/lightBlack_darkWhite" />
+
+                    <!-- Notification Source TextView -->
+
+                    <TextView
+                        android:id="@+id/last_notification_app"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/separator_line2"
+                        android:text="Last notification from: "
+                        android:layout_marginTop="16dp"
+                        android:textColor="?attr/lightBlack_darkWhite"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/notification_source_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notifications to show"
+                        android:layout_marginTop="16dp"
+                        android:layout_below="@id/last_notification_app"
+                        android:textColor="?attr/lightBlack_darkWhite"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/searchSection"
+                        android:layout_width="match_parent"
+                        android:layout_height="270dp"
+                        android:layout_below="@+id/notification_source_textview"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.SearchView
+                            android:id="@+id/searchView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/rounded_corner_background_grey"
+                            android:hint="Search for apps..."
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recApp"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                    </LinearLayout>
+
+
+                    <!-- Separator Line -->
+                    <!--                    <View-->
+                    <!--                        android:id="@+id/separator_line3"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="1dp"-->
+                    <!--                        android:layout_below="@id/radio_theme_group"-->
+                    <!--                        android:layout_marginTop="16dp"-->
+                    <!--                        android:background="?attr/lightBlack_darkWhite" />-->
+                    <!-- Text View Below -->
+                    <!-- Two Buttons Below -->
+                </RelativeLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:id="@+id/button_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnClose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="65dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:backgroundTint="@color/purple_blue"
+                    android:paddingHorizontal="25dp"
+                    android:text="@string/close_settings"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

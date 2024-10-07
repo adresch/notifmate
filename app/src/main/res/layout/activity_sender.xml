@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <!-- EditText for entering data to send -->
+    <EditText
+        android:id="@+id/editTextData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter data to send"
+        android:layout_alignParentTop="true"
+        android:visibility="gone" />
+
+    <!-- Send button -->
+    <Button
+        android:id="@+id/btnSendData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send"
+        android:layout_below="@id/editTextData"
+        android:layout_marginTop="16dp"
+        android:visibility="gone" />
+
+    <!-- RecyclerView for displaying discovered devices -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnSendData"
+        tools:listitem="@layout/item_device"
+        android:layout_marginTop="16dp" />
+
+</RelativeLayout>

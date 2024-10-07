@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">NotifMate</string>
+    <string name="accessibility_service_description">Your accessibility service description</string>
+    <string name="app_icon">app icon</string>
+    <string name="splashlogo">splashLogo</string>
+    <string name="backgroundimg">BackgroundImg</string>
+    <string name="header_logo">Header Logo</string>
+    <string name="ic_receiver">ic_receiver</string>
+    <string name="receiver">Receiver</string>
+    <string name="ic_sender">ic_sender</string>
+    <string name="sender">Sender</string>
+    <string name="cancel">Cancel</string>
+    <string name="scan_devices">Scan Devices</string>
+    <string name="notification_source">Notification Source</string>
+    <string name="remote_amp_local"><![CDATA[Remote & Local]]></string>
+    <string name="remote_only">Remote Only</string>
+    <string name="local_only">Local Only</string>
+    <string name="none">None</string>
+    <string name="music_player_source">Music Player source</string>
+    <string name="remote_player">Remote player</string>
+    <string name="local_player">Local player</string>
+    <string name="theme">Theme</string>
+    <string name="always_bright">Always bright</string>
+    <string name="always_dark">Always dark</string>
+    <string name="automatic_follow_device_theme">Automatic (Follow device theme)</string>
+    <string name="close_settings">Close settings</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="connected_to">Connected to :</string>
+    <string name="not_connected_to_any_device">Not Connected to any device</string>
+    <string name="run_locally">Run locally</string>
+    <string name="waiting_for_device_connection">Waiting for device connection</string>
+    <string name="discoverable_mode_not_enabled">Discoverable mode not enabled.</string>
+    <string name="enable_discoverable_mode">Enable discoverable mode</string>
+    <string name="appimage">appimage</string>
+</resources>

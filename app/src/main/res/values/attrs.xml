@@ -1,0 +1,12 @@
+<resources>
+    <attr name="darkDialogPadding" format="dimension" />
+    <attr name="drawerItemBg" format="reference" />
+    <attr name="toplogo" format="reference" />
+    <attr name="toplogohome" format="reference" />
+    <attr name="backgroundColor" format="color" />
+    <attr name="lightBlack_darkWhite" format="color" />
+    <attr name="progressColor" format="color" />
+    <attr name="day_night_pause" format="reference" />
+    <attr name="splash_logo" format="reference" />
+</resources>
+
