@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">NotifMate</string>
+    <string name="hello_this_app_requires_bluetooth_and_notification_access_to_function_properly">Bonjour ! Cette application nécessite le bluetooth et l\'accès aux notifications pour fonctionner correctement.</string>
+    <string name="proceed">Continuer</string>
+    <string name="sender">Émetteur</string>
+    <string name="ic_receiver">Icône du récepteur</string>
+    <string name="receiver">Receveur</string>
+    <string name="header_logo">Logo de l\'en-tête</string>
+    <string name="backgroundImg">Image de fond</string>
+    <string name="stop">Stop</string>
+    <string name="excludeApps">Exclure des applications</string>
+    <string name="noDeviceSelected">Aucun appareil sélectionné</string>
+    <string name="settings_button">Bouton de paramètres</string>
+    <string name="play_pause_button">Bouton marche/arret</string>
+    <string name="next_button">Bouton suivant</string>
+    <string name="close_settings">Fermer les paramètres</string>
+    <string name="automatic_follow_device_theme">Automatic - Suivre le thème de l\'appareil</string>
+    <string name="always_dark">Toujours sombre</string>
+    <string name="always_bright">Toujours clair</string>
+    <string name="theme">Thème</string>
+    <string name="overlay">Overlay</string>
+    <string name="always">Toujours</string>
+    <string name="never">Jamais</string>
+    <string name="app_in_background">Quand l\'application est en arrière plan</string>
+    <string name="notif_source">Source des notifications</string>
+    <string name="remote_local"><![CDATA[Remote & Local]]></string>
+    <string name="remote_only">Distante seulement</string>
+    <string name="local_only">Locale seulement</string>
+    <string name="music_source">Source de la musique</string>
+    <string name="remote">Distante</string>
+    <string name="local">Locale</string>
+    <string name="unknown_title">Titre inconnu</string>
+    <string name="unknown_artist">Artiste inconnu</string>
+    <string name="unknown_state">État inconnu</string>
+    <string name="unknown_app">Application inconnu</string>
+    <string name="unknown_source">Source inconnu</string>
+
+</resources>

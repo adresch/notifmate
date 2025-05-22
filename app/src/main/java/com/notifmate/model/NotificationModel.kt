@@ -1,23 +1,8 @@
 package com.notifmate.model
 
-import android.graphics.Bitmap
-import java.io.Serializable
-
-data class NotificationModel(
+data class NotificationItem(
+    val appName: String,
     val title: String,
-    val msg: String,
-    val packageName: String
-) :
-    Serializable
-
-data class AudioModel(
-    val songName: String? = null,
-    val artistName: String? = null,
-    val musicArtBase64: String? = null
-) :
-    Serializable
-
-data class AudioStateModel(
-    val playBackState: Int? = null
-):
-    Serializable
+    val text: String,
+    var isExpanded: Boolean = false // Track visibility per item
+)

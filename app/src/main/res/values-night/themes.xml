@@ -1,19 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.NotifMate" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-        <item name="backgroundColor">@color/black</item>
+    <!-- Dark Theme -->
+    <style name="Base.Theme.Notifmate" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="backgroundColor">@color/black</item>  <!-- Dark mode background -->
+        <item name="aeriGearColor">@color/aeriGear_orange</item>
+        <item name="appsIcon">@drawable/ic_apps_orange</item>
+        <item name="topLogo">@drawable/logo_top_orange</item>
+        <item name="icReceiver">@drawable/ic_receiver_orange</item>
+        <item name="icSender">@drawable/ic_sender_orange</item>
+        <item name="icApps">@drawable/ic_apps_orange</item>
         <item name="lightBlack_darkWhite">@color/white</item>
-        <item name="toplogo">@drawable/logo_dark__4_</item>
-        <item name="progressColor">#393636</item>
-        <item name="day_night_pause">@drawable/icons8_pause_button_48___white</item>
-        <item name="splash_logo">@drawable/splash_dark</item>
+        <item name="progressColor">@color/white</item>
+        <item name="playButton">@drawable/ic_play</item>
+        <item name="pauseButton">@drawable/ic_pause_button_white</item>
     </style>
 
-    <style name="Theme.NotifMate" parent="Base.Theme.NotifMate" />
-
-    <style name="Theme.RemoveSplashScreenTheme" parent="@style/Theme.NotifMate">
-        <item name="android:windowIsTranslucent">true</item>
-    </style>
+    <style name="Theme.Notifmate" parent="Base.Theme.Notifmate" />
 </resources>

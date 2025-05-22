@@ -1,122 +1,47 @@
 package com.notifmate
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.graphics.PixelFormat
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.provider.Settings
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.WindowManager
-import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationManagerCompat
-import com.notifmate.databinding.ActivityHomeBinding
-import com.notifmate.helper.CustomActivity
+import com.notifmate.ActivityReceiver
+import com.notifmate.ActivitySender
+import com.notifmate.helper.CustomUtils
+import com.google.android.material.card.MaterialCardView
+import com.notifmate.R
+import com.notifmate.model.NotifMateActivity
 
-class ActivityHome : AppCompatActivity() {
-
-    private lateinit var overlayPermissionLauncher: ActivityResultLauncher<Intent>
-    private lateinit var binding: ActivityHomeBinding
-
-    private val notificationAccessLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (isNotificationAccessGranted()) {
-                Toast.makeText(this, "Notification access permission granted", Toast.LENGTH_SHORT).show()
-                checkAndRequestOverlayPermission()
-            } else {
-                Toast.makeText(this, "Notification access permission not granted", Toast.LENGTH_SHORT).show()
-            }
-        }
+class ActivityHome : NotifMateActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_home)
 
-        // Initialize overlay permission launcher
-        overlayPermissionLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (!Settings.canDrawOverlays(this)) {
-                Toast.makeText(this, "Overlay permission denied.", Toast.LENGTH_SHORT).show()
-            }
+        val appScreenPreference = CustomUtils.getAppScreenPreference(this)
+
+        if (appScreenPreference == "receiver") {
+            val intent = Intent(this, ActivityReceiver::class.java)
+            startActivity(intent)
+        } else if (appScreenPreference == "sender") {
+            val intent = Intent(this, ActivitySender::class.java)
+            startActivity(intent)
         }
 
-        // Request notification access if not granted
-        if (isNotificationAccessGranted().not()) {
-            requestNotificationAccessPermission()
-        } else {
-            checkAndRequestOverlayPermission()
+        val receiverButton = findViewById<MaterialCardView>(R.id.receiverView)
+        val senderButton = findViewById<MaterialCardView>(R.id.senderView)
+
+        receiverButton.setOnClickListener {
+            Log.i("MYDEBUG", "receiverButton")
+            CustomUtils.saveAppScreenPreference(this, "receiver")
+            val intent = Intent(this, ActivityReceiver::class.java)
+            startActivity(intent)
         }
 
-        // Call getAppScreenPreference
-        val appScreenPreference = getAppScreenPreference()
-
-        if (appScreenPreference == "ActivityWaiting"){
-            if (isNotificationAccessGranted()) {
-                val intent = Intent(this@ActivityHome, ActivityWaiting::class.java)
-                startActivity(intent)
-            }
-        }else if (appScreenPreference == "ActivityDeviceList"){
-            if (isNotificationAccessGranted()) {
-                val intent = Intent(this@ActivityHome, ActivityDeviceList::class.java)
-                startActivity(intent)
-            }
+        senderButton.setOnClickListener {
+            Log.i("MYDEBUG", "senderButton")
+            CustomUtils.saveAppScreenPreference(this, "sender")
+            val intent = Intent(this, ActivitySender::class.java)
+            startActivity(intent)
         }
-
-        binding.apply {
-            receiverView.setOnClickListener {
-                if (isNotificationAccessGranted()) {
-                    val intent = Intent(this@ActivityHome, ActivityWaiting::class.java)
-                    startActivity(intent)
-                } else {
-                    requestNotificationAccessPermission()
-                }
-            }
-
-            senderView.setOnClickListener {
-                if (isNotificationAccessGranted()) {
-                    val intent = Intent(this@ActivityHome, ActivityDeviceList::class.java)
-                    startActivity(intent)
-                } else {
-                    requestNotificationAccessPermission()
-                }
-            }
-        }
-    }
-
-    private fun getAppScreenPreference(): String {
-        val preferences = getSharedPreferences("my_preferences", Context.MODE_PRIVATE)
-        val appScreen = preferences.getString("appScreen", "")
-        return appScreen ?: ""
-    }
-
-    private fun checkAndRequestOverlayPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
-            val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName"))
-            overlayPermissionLauncher.launch(intent)
-        }
-    }
-
-    private fun requestNotificationAccessPermission() {
-        Toast.makeText(
-            this,
-            "Notification access is required in order to continue",
-            Toast.LENGTH_SHORT
-        ).show()
-        val intent = Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
-        notificationAccessLauncher.launch(intent)
-    }
-
-    private fun isNotificationAccessGranted(): Boolean {
-        val listenerServices = NotificationManagerCompat.getEnabledListenerPackages(this)
-        return listenerServices.contains(packageName)
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="purple_blue">#788CFB</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
     <color name="red">#FF0000</color>
-    <color name="defaultBorderColor">#00212121</color>
-
+    <color name="aeriGear_blue">#102632</color>
+    <color name="aeriGear_orange">#eb651e</color>
+    <color name="light_gray">#E0E0E0</color> <!-- Example light gray -->
 </resources>

@@ -1,37 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16dp"
-    android:orientation="vertical">
 
-    <!-- EditText for entering data to send -->
-    <EditText
-        android:id="@+id/editTextData"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter data to send"
-        android:layout_alignParentTop="true"
-        android:visibility="gone" />
 
-    <!-- Send button -->
-    <Button
-        android:id="@+id/btnSendData"
+    android:background="?attr/backgroundColor"
+    tools:context=".ActivityHome">
+
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send"
-        android:layout_below="@id/editTextData"
-        android:layout_marginTop="16dp"
-        android:visibility="gone" />
+        app:srcCompat="@drawable/background" />
 
-    <!-- RecyclerView for displaying discovered devices -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/btnSendData"
-        tools:listitem="@layout/item_device"
-        android:layout_marginTop="16dp" />
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="315dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/header_logo"
+            app:srcCompat="?attr/topLogo" />
+
+        <ImageView
+            android:id="@+id/settings"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@string/settings_button"
+            android:src="@drawable/ic_settings"
+            app:tint="?attr/aeriGearColor" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/selectReceiver"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="16dp"
+            android:elevation="16dp"
+            android:paddingLeft="125dp"
+            android:paddingTop="62dp"
+            android:paddingRight="125dp"
+            android:paddingBottom="63dp"
+            app:cardBackgroundColor="?attr/backgroundColor"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:contentDescription="@string/ic_receiver"
+                    android:src="?attr/icReceiver" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="0dp"
+                        android:text="@string/receiver"
+                        android:textColor="?attr/aeriGearColor"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/receiverName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="33dp"
+                        android:layout_marginTop="0dp"
+                        android:text="@string/noDeviceSelected"
+                        android:textColor="?attr/aeriGearColor"
+                        android:textSize="20sp"
+                        android:textStyle="bold|italic" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/excludeApps"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="16dp"
+            android:elevation="16dp"
+            android:paddingLeft="125dp"
+            android:paddingTop="62dp"
+            android:paddingRight="125dp"
+            android:paddingBottom="63dp"
+            app:cardBackgroundColor="?attr/backgroundColor"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:contentDescription="@string/excludeApps"
+                    android:src="?attr/icApps" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="86dp"
+                        android:layout_marginTop="0dp"
+                        android:text="@string/excludeApps"
+                        android:textAlignment="center"
+                        android:textColor="?attr/aeriGearColor"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/senderStop"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="16dp"
+            android:elevation="16dp"
+            android:paddingLeft="125dp"
+            android:paddingTop="62dp"
+            android:paddingRight="125dp"
+            android:paddingBottom="63dp"
+            app:cardBackgroundColor="?attr/backgroundColor"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp">
+
+
+            <LinearLayout
+                android:id="@+id/stop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stop"
+                    android:textColor="@color/design_default_color_error"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </LinearLayout>
 
 </RelativeLayout>

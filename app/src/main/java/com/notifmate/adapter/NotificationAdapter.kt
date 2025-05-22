@@ -5,31 +5,81 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.notifmate.model.NotificationModel
 import com.notifmate.R
+import com.notifmate.model.NotificationItem
+import com.google.android.material.button.MaterialButton
 
-class NotificationAdapter(private val notificationList: List<NotificationModel>) : RecyclerView.Adapter<NotificationAdapter.ViewHolder>() {
+class NotificationAdapter(
+    private var notificationList: MutableList<NotificationItem>
+) : RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_item, parent, false)
-        return ViewHolder(view)
+    class NotificationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val headerText: TextView = itemView.findViewById(R.id.header_text)
+        val titleText: TextView = itemView.findViewById(R.id.title_text)
+        val descriptionText: TextView = itemView.findViewById(R.id.description_text)
+        val deleteButton: MaterialButton = itemView.findViewById(R.id.delete_button)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val notification = notificationList[position]
-        holder.bind(notification)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.receiver_item, parent, false)
+        return NotificationViewHolder(itemView)
     }
 
-    override fun getItemCount(): Int {
-        return notificationList.size
-    }
+    override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
+        val currentItem = notificationList[position]
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val textView: TextView = itemView.findViewById(R.id.textView)
+        holder.headerText.text = currentItem.appName
+        holder.titleText.text = currentItem.title
+        holder.descriptionText.text = currentItem.text
 
-        fun bind(notification: NotificationModel) {
-           // textView.text = notification.text
+        // Show or hide delete button based on `isExpanded`
+        holder.deleteButton.visibility = if (currentItem.isExpanded) View.VISIBLE else View.INVISIBLE
+
+        holder.itemView.setOnClickListener {
+            if (holder.adapterPosition != RecyclerView.NO_POSITION &&
+                holder.adapterPosition < notificationList.size) {
+                toggleItemExpansion(holder.adapterPosition)
+            }
         }
+
+        holder.deleteButton.setOnClickListener {
+            if (holder.adapterPosition != RecyclerView.NO_POSITION &&
+                holder.adapterPosition < notificationList.size) {
+                removeItem(holder.adapterPosition)
+            }
+        }
+    }
+
+    override fun getItemCount(): Int = notificationList.size
+
+    private fun toggleItemExpansion(position: Int) {
+        if (position < 0 || position >= notificationList.size) return
+
+        // Collapse others
+        notificationList.forEachIndexed { index, item ->
+            if (index != position && item.isExpanded) {
+                item.isExpanded = false
+                notifyItemChanged(index)
+            }
+        }
+
+        // Toggle this one
+        notificationList[position].isExpanded = !notificationList[position].isExpanded
+        notifyItemChanged(position)
+    }
+
+    fun removeItem(position: Int) {
+        notificationList.removeAt(position)
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, notificationList.size) // Fix item positions
+    }
+
+    fun addItem(notification: NotificationItem, recyclerView: RecyclerView) {
+        notificationList.forEach { it.isExpanded = false }
+        notificationList.add(0, notification)
+        notifyItemInserted(0)
+        recyclerView.scrollToPosition(0)
     }
 }
 

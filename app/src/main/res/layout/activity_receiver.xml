@@ -1,23 +1,88 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ReceiverActivity">
+    android:background="?attr/backgroundColor"
+    tools:context=".ActivityReceiver">
 
-    <!-- TextView for displaying connection status -->
-    <TextView
-        android:id="@+id/statusTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="Waiting for a connection..."
-        android:textSize="16sp" />
-
-    <!-- RecyclerView for displaying received data -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/dataRecyclerView"
+    <!-- Header Section -->
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/statusTextView"
-        android:layout_marginTop="16dp" />
-</RelativeLayout>
+        android:contentDescription="@string/backgroundImg"
+        android:scaleType="fitXY"
+        android:src="@drawable/background"
+        android:visibility="invisible" />
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Header Logo - Left Side -->
+        <ImageView
+            android:id="@+id/header_logo"
+            android:layout_width="200dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:contentDescription="@string/header_logo"
+            android:scaleType="fitXY"
+            android:src="?attr/topLogo" />
+
+        <!-- Settings Icon - Right Side -->
+        <ImageView
+            android:id="@+id/settings"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/settings_button"
+            android:src="@drawable/ic_settings"
+            app:tint="?attr/aeriGearColor" />
+    </RelativeLayout>
+
+    <!-- Notifications List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recNoti"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/buyMusicFeature"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        tools:listitem="@layout/receiver_item" />
+
+    <!-- Buy Music Feature Button -->
+    <Button
+        android:id="@+id/buyMusicFeature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="?attr/backgroundColor"
+        android:padding="10dp"
+        android:text="Unlock Music Feature"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/player_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Music Player (Initially Hidden) -->
+    <include
+        android:id="@+id/player_layout"
+        layout="@layout/player_item_receiver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -95,7 +95,7 @@
             android:layout_height="75dp"
             android:layout_gravity="center_vertical|end"
             android:layout_marginEnd="20dp"
-            android:backgroundTint="@color/purple_blue"
+            android:backgroundTint="?attr/aeriGearColor"
             android:elevation="8dp"
             android:text="Delete"
             android:textSize="26sp"
