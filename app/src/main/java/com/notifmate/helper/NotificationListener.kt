@@ -54,8 +54,25 @@ class NotificationListener : NotificationListenerService() {
             return
         }
 
-        val prioritizedSession = sessions.firstOrNull { it.playbackState?.state == PlaybackState.STATE_PLAYING }
-            ?: sessions.first()
+        // Prioritize sessions based on playback state
+        val prioritizedSession = sessions
+            .filter { it.playbackState?.state != null }
+            .maxByOrNull { session ->
+                when (session.playbackState?.state) {
+                    PlaybackState.STATE_PLAYING -> 3
+                    PlaybackState.STATE_PAUSED -> 2
+                    PlaybackState.STATE_STOPPED -> 1
+                    else -> 0
+                }
+            }
+
+        if (prioritizedSession == null) {
+            Log.w(logTag, "No usable media session found")
+            return
+        }
+
+        Log.d(logTag, "Available sessions: ${sessions.map { it.packageName to it.playbackState?.state }}")
+        Log.d(logTag, "Selected session: ${prioritizedSession.packageName} (${prioritizedSession.playbackState?.state})")
 
         if (!forceUpdate && activeMediaController?.packageName == prioritizedSession.packageName) return
 
@@ -65,6 +82,7 @@ class NotificationListener : NotificationListenerService() {
 
         updateCurrentMediaState(prioritizedSession.metadata, prioritizedSession.playbackState)
     }
+
 
     private val mediaCallback = object : MediaController.Callback() {
         override fun onMetadataChanged(metadata: MediaMetadata?) {
@@ -76,10 +94,14 @@ class NotificationListener : NotificationListenerService() {
         }
     }
 
+    private var lastMediaTitle: String? = null
+    private var lastMediaArtist: String? = null
+
     private fun updateCurrentMediaState(metadata: MediaMetadata?, state: PlaybackState?) {
-        val title = metadata?.getString(MediaMetadata.METADATA_KEY_TITLE) ?: "Unknown Title"
-        val artist = metadata?.getString(MediaMetadata.METADATA_KEY_ARTIST) ?: "Unknown Artist"
-        val artBase64 = bitmapToBase64(metadata?.getBitmap(MediaMetadata.METADATA_KEY_ART))
+        val title = metadata?.getString(MediaMetadata.METADATA_KEY_TITLE)?.takeIf { it.isNotBlank() } ?: return
+        val artist = metadata.getString(MediaMetadata.METADATA_KEY_ARTIST)?.takeIf { it.isNotBlank() } ?: return
+        val artBase64 = bitmapToBase64(metadata.getBitmap(MediaMetadata.METADATA_KEY_ART))
+
         val playbackState = when (state?.state) {
             PlaybackState.STATE_PLAYING -> "Playing"
             PlaybackState.STATE_PAUSED -> "Paused"
@@ -89,8 +111,11 @@ class NotificationListener : NotificationListenerService() {
 
         val playbackStateCode = state?.state ?: -1
 
-        if (title != "Unknown Title" && artist != "Unknown Artist"){
+        // Only send media update if title/artist changed
+        if (title != lastMediaTitle || artist != lastMediaArtist) {
             sendMediaUpdate(title, artist, artBase64, playbackState)
+            lastMediaTitle = title
+            lastMediaArtist = artist
         }
 
         if (playbackStateCode != lastPlaybackState) {
@@ -100,6 +125,7 @@ class NotificationListener : NotificationListenerService() {
 
         Log.d(logTag, "Media Update -> $title - $artist ($playbackState)")
     }
+
 
     private fun sendMediaUpdate(title: String, artist: String, artBase64: String, state: String) {
         val intent = Intent(ACTION_MEDIA_UPDATED).apply {
